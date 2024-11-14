@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; }
+        header { background-color: #a0522d; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 600px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .form-group { margin: 15px 0; }
+        label { display: block; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        .btn { background-color: #a0522d; color: white; padding: 10px; border: none; cursor: pointer; transition: background-color 0.3s ease; }
+        .btn:hover { background-color: #8b4513; }
+
+        /* Popup Styling */
+        .popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #a0522d; color: white; padding: 20px; border-radius: 8px; }
+        .popup.show { display: block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Payment</h1>
+    </header>
+
+    <div class="container">
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" required>
+            </div>
+            <div class="form-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method">
+                    <option value="credit">Credit Card</option>
+                    <option value="debit">Debit Card</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            <button type="button" class="btn" onclick="submitPayment()">Submit Payment</button>
+        </form>
+    </div>
+
+    <div class="popup" id="paymentPopup">
+        <p>Payment Successful!</p>
+    </div>
+
+    <script>
+        function submitPayment() {
+            const popup = document.getElementById("paymentPopup");
+            popup.classList.add("show");
+            setTimeout(() => popup.classList.remove("show"), 2000);
+        }
+    </script>
+</body>
+</html>

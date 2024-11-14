@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            overflow: hidden;
+        }
+
+        .signup-container {
+            background: #fff;
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: slideIn 0.5s ease;
+            width: 300px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 1em;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8em;
+            margin: 0.5em 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #36d1dc;
+        }
+
+        .signup-btn {
+            background: #36d1dc;
+            color: #fff;
+            padding: 0.8em;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .signup-btn:hover {
+            background: #5b86e5;
+        }
+
+        .login-link {
+            margin-top: 1em;
+            display: block;
+            color: #36d1dc;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUsername" placeholder="Username" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <button class="signup-btn" onclick="signup()">Sign Up</button>
+        <a href="login.html" class="login-link">Already have an account? Login</a>
+    </div>
+
+    <script>
+        function signup() {
+            const username = document.getElementById("signupUsername").value;
+            const password = document.getElementById("signupPassword").value;
+
+            if (localStorage.getItem(username)) {
+                alert("Username already exists!");
+            } else {
+                const user = { username: username, password: password };
+                localStorage.setItem(username, JSON.stringify(user));
+                alert("Sign up successful!");
+                localStorage.setItem("currentUser", username); // Save current user for session
+                window.location.href = "login.html"; // Redirect to home page
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup - Where is My Food</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        }
+
+        .admin-signup-container {
+            background: #fff;
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 1em;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8em;
+            margin: 0.5em 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff7e5f;
+        }
+
+        .admin-signup-btn {
+            background: #ff7e5f;
+            color: #fff;
+            padding: 0.8em;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .admin-signup-btn:hover {
+            background: #feb47b;
+        }
+
+        .back-to-login {
+            margin-top: 1em;
+            display: block;
+            color: #ff7e5f;
+            text-decoration: none;
+        }
+
+        .back-to-login:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-signup-container">
+        <h2>Admin Signup</h2>
+        <input type="text" id="newAdminUsername" placeholder="Create Admin Username" required>
+        <input type="password" id="newAdminPassword" placeholder="Create Password" required>
+        <button class="admin-signup-btn" onclick="adminSignup()">Sign Up</button>
+        <a href="admin-login.html" class="back-to-login">Already have an account? Back to Login</a>
+    </div>
+
+    <script>
+        function adminSignup() {
+            const newAdminUsername = document.getElementById("newAdminUsername").value;
+            const newAdminPassword = document.getElementById("newAdminPassword").value;
+
+            // Simple validation for empty fields
+            if (newAdminUsername === "" || newAdminPassword === "") {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            // For demonstration: save username and password to localStorage
+            // In a real app, you should send this to a server for registration.
+            localStorage.setItem("adminUsername", newAdminUsername);
+            localStorage.setItem("adminPassword", newAdminPassword);
+
+            alert("Admin account created successfully!");
+            window.location.href = "admin-login.html"; // Redirect to admin login page
+        }
+    </script>
+
+</body>
+</html>

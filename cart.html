@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; }
+        header { background-color: #a0522d; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .cart-item { padding: 15px; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
+        #total { font-size: 18px; font-weight: bold; text-align: right; }
+        .checkout-btn { display: block; background-color: #a0522d; color: white; padding: 10px 20px; text-align: center; border-radius: 5px; margin-top: 20px; text-decoration: none; font-size: 18px; }
+        .checkout-btn:hover { background-color: #8b4513; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+
+    <div class="container" id="cart-container">
+        <!-- Cart items will be displayed here -->
+    </div>
+
+    <script>
+        const cartContainer = document.getElementById('cart-container');
+        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function displayCart() {
+            let total = 0;
+            storedCart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `<span>${item.name}</span><span>$${item.price.toFixed(2)}</span>`;
+                cartContainer.appendChild(itemElement);
+                total += item.price;
+            });
+            
+            const totalElement = document.createElement('div');
+            totalElement.id = 'total';
+            totalElement.textContent = 'Total: $' + total.toFixed(2);
+            cartContainer.appendChild(totalElement);
+            
+            const checkoutButton = document.createElement('a');
+            checkoutButton.href = 'payment.html';
+            checkoutButton.classList.add('checkout-btn');
+            checkoutButton.textContent = 'Proceed to Payment';
+            cartContainer.appendChild(checkoutButton);
+        }
+
+        displayCart();
+    </script>
+
+</body>
+</html>

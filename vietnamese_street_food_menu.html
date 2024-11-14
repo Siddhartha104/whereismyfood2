@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnamese Street Food Menu</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; }
+        header { background-color: #a0522d; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .menu-item { padding: 15px; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
+        .menu-item h3 { margin: 0; }
+        .add-to-cart { background-color: #a0522d; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        .add-to-cart:hover { background-color: #8b4513; }
+        #cart-link { display: block; text-align: center; margin: 20px 0; font-size: 18px; color: #a0522d; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vietnamese Street Food Menu</h1>
+    </header>
+
+    <div class="container">
+        <h2>Our Amazing Food</h2>
+
+        <div class="menu-item">
+            <div>
+                <h3>Pork and Shrimp Banh Xeo - $8.99</h3>
+                <p>A crispy crepe filled with pork, shrimp, bean sprouts, and fresh herbs.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Pork and Shrimp Banh Xeo', 8.99)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <div>
+                <h3>Banh Mi - $10.99</h3>
+                <p>A crispy baguette with pickled veggies, cilantro, pork, pate, sausage, and cheese.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Banh Mi', 10.99)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <div>
+                <h3>Pho Ga - $12.99</h3>
+                <p>Daily-made chef's broth with fresh rice noodles, herbs, and chicken.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Pho Ga', 12.99)">Add to Cart</button>
+        </div>
+
+        <h2>Available Drinks</h2>
+
+        <div class="menu-item">
+            <div>
+                <h3>Coke - $1.99</h3>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Coke', 1.99)">Add to Cart</button>
+        </div>
+
+        <div class="menu-item">
+            <div>
+                <h3>Diet Coke - $1.99</h3>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Diet Coke', 1.99)">Add to Cart</button>
+        </div>
+        
+        <a href="cart.html" id="cart-link">Go to Cart</a>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            const item = { name: itemName, price: itemPrice };
+            cart.push(item);
+            alert(itemName + ' has been added to the cart!');
+            localStorage.setItem('cart', JSON.stringify(cart)); // Store cart in localStorage
+        }
+    </script>
+
+</body>
+</html>

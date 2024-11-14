@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; }
+        header { background-color: #a0522d; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 600px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .form-group { margin: 15px 0; }
+        label { display: block; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+        .btn { background-color: #a0522d; color: white; padding: 10px; border: none; cursor: pointer; transition: background-color 0.3s ease; }
+        .btn:hover { background-color: #8b4513; }
+
+        /* Popup Styling */
+        .popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #a0522d; color: white; padding: 20px; border-radius: 8px; }
+        .popup.show { display: block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <div class="container">
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" required></textarea>
+            </div>
+            <button type="button" class="btn" onclick="submitMessage()">Send Message</button>
+        </form>
+    </div>
+
+    <div class="popup" id="contactPopup">
+        <p>Your message has been sent!</p>
+    </div>
+
+    <script>
+        function submitMessage() {
+            const popup = document.getElementById("contactPopup");
+            popup.classList.add("show");
+            setTimeout(() => popup.classList.remove("show"), 2000);
+        }
+    </script>
+</body>
+</html>
